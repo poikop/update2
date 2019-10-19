@@ -1,0 +1,59 @@
+﻿smsServices:
+# ----------------
+# TEST "SERVICE"
+# - url: 'https://httpbin.org/post'
+#   method: 'POST'
+#   headers:
+#     Content-Type: 'application/json'
+#   body: '{"phone_number":"<num>"}'
+#   okRes: 'origin'
+#   delay: 5
+# ----------------
+
+- url: 'https://helsi.me/api/healthy/accounts/login'
+  method: 'POST'
+  headers:
+    Content-Type: 'application/json;charset=UTF-8'
+  body: '{phone: "<num>", platform: "PISWeb"}'
+  okRes: 'sms_sent":true'
+  delay: 21
+
+- url: 'https://api.gotinder.com/v2/auth/sms/send?auth_type=sms&locale=ru'
+  method: 'POST'
+  headers:
+    Content-Type: 'application/json'
+  body: '{"phone_number":"<num>"}'
+  okRes: 'sms_sent":true'
+  delay: 21
+
+- url: 'https://api.tinkoff.ru/v1/sign_up'
+  method: 'POST'
+  body: 'phone=%2B<num>'
+  okRes: '"resultCode":"WAITING_CONFIRMATION"'
+  delay: 21
+
+- url: 'https://youla.ru/web-api/auth/request_code'
+  method: 'POST'
+  body: 'phone=<num>'
+  okRes: '"phone"'
+  delay: 16
+
+- url: 'http://service.matreshcar.ru/profile/smstoken'
+  method: 'POST'
+  headers:
+    Content-Type: 'application/json'
+  body: '{"PhoneNumber":<num>}'
+  okRes: '"validForSeconds":'
+  delay: 21
+
+callServices:
+- url: 'https://findclone.ru/register?phone=+<num>'
+  method: 'GET'
+  okRes: '"pin_size"'
+  delay: 61
+  
+- url: 'https://global.newmedicine.com.ua/api/global/IVR_confirm?phone=<num>'
+  method: 'GET'
+  okRes: '"pin_siz1e"'
+  delay: 10
+  
